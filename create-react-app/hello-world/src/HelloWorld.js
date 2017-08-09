@@ -22,9 +22,9 @@ class HelloWorld extends Component {
     return (
       <div className="HelloWorld">{this.state.greeting} {this.props.name}!
       <br/>
-      <button onClick={this.frenchify}>Frenchify!</button>
+      <button className="frenchify" onClick={this.frenchify}>Frenchify!</button>
       <br/>
-      <button onClick={this.removeGreeting}>Remove Me!</button></div>
+      <button className="remove" onClick={this.removeGreeting}>Remove Me!</button></div>
     );
   }
 }
