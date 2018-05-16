@@ -29,26 +29,40 @@ const people = [
   }
 ]
 
+function searchingFor(term) {
+  return function(x) {
+    return x.first.toLowerCase().includes(term.toLowerCase()) || !term;
+  }
+}
+
 class App extends Component {
   constructor(props){
     super(props);
 
       this.state = {
-        people: people
+        people: people,
+        term: ''
       }
 
       this.searchHandler = this.searchHandler.bind(this);
   }
+
+  searchHandler(e){
+    this.setState({term: e.target.value});
+  }
+
   render() {
+    const {term, people} = this.state;
     return (
       <div className="App">
         <form>
           <input type="text"
               onChange={this.searchHandler}
+              value={term}
           />
         </form>
         {
-          this.state.people.map(person =>
+          people.filter(searchingFor(term)).map(person =>
             <div key={person.id}>
               <h1>{person.first}</h1>
               <h1>{person.last}</h1>
