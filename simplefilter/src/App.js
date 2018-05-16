@@ -31,7 +31,7 @@ const people = [
 
 function searchingFor(term) {
   return function(x) {
-    return x.first.toLowerCase().includes(term.toLowerCase()) || !term;
+    return x.first.toLowerCase().includes(term.toLowerCase()) || x.last.toLowerCase().includes(term.toLowerCase()) || !term;
   }
 }
 
