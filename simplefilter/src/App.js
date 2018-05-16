@@ -34,13 +34,13 @@ class App extends Component {
     return (
       <div className="App">
         {
-          people.map(person => {
+          people.map(person =>
             <div key={person.id}>
               <h1>{person.first}</h1>
-              <h1>{person.first}</h1>
+              <h1>{person.last}</h1>
               <h1>{person.age}</h1>
             </div>
-          })
+          )
         }
       </div>
     );
