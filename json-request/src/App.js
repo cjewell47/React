@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import logo from './logo.svg';
+import List from './List.jsx';
 import './App.css';
 
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
     const {people} = this.state;
     return (
       <div className="App">
+        <List people={people} />
       </div>
     );
   }
