@@ -5,8 +5,6 @@ function searchingFor(term) {
   return function(x) {
     let length = term.length;
     console.log('x', x)
-    console.log('term', term)
-    console.log('length', length)
     return x.name.toLowerCase().startsWith(term.toLowerCase()) || !term;
   }
 }
@@ -19,23 +17,24 @@ class List extends Component {
       term: ''
     }
 
-    this.searchHandler = this.searchHandler.bind(this);
+    this.searchHandler = this.searchHandler.bind(this)
   }
   searchHandler(e){
-    this.setState({term: e.target.value});
+    this.setState({term: e.target.value})
   }
   render() {
-    const people = this.props.people;
+    const {people} = this.props
+    const {term}   = this.state
     return (
       <div className="">
         <form>
           <input type="text"
               onChange={this.searchHandler}
-              value={this.state.term}
+              value={term}
           />
         </form>
         {
-          people.filter(searchingFor(this.state.term)).map((p) => {
+          people.filter(searchingFor(term)).map((p) => {
             console.log(p)
             return (
               <div key={p.url}>

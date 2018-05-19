@@ -14,7 +14,7 @@ class CharInfo extends Component {
     this.setState({ expanded: !this.state.expanded })
   }
   render() {
-    const info = this.props.charInfo;
+    const {info} = this.props;
     if (!this.state.expanded) {
       return (
         <p className="btn btn-info" onClick={this.open}>Show info</p>
