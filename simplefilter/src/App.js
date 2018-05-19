@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AddPerson from './AddPerson'
 
 function searchingFor(term) {
   return function(x) {
@@ -40,23 +41,32 @@ class App extends Component {
         ]
       }
 
-      this.searchHandler = this.searchHandler.bind(this);
+      this.searchHandler = this.searchHandler.bind(this)
+      this.addPerson     = this.addPerson.bind(this)
   }
 
   searchHandler(e){
     this.setState({term: e.target.value});
   }
 
+  addPerson(person) {
+    this.setState((state) => ({
+      people: state.people.concat([person])
+    }))
+  }
+
   render() {
     const {term, people} = this.state;
     return (
       <div className="App">
+        <h3>Search for Rappers</h3>
         <form>
           <input type="text"
               onChange={this.searchHandler}
               value={term}
           />
         </form>
+        <AddPerson addNew={this.addPerson} />
         {
           people.filter(searchingFor(term)).map(person =>
             <div>
