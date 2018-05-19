@@ -2,33 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const people = [
-  {
-    id: 1,
-    first: "Andre",
-    last: "3000",
-    age: 43
-  },
-  {
-    id: 2,
-    first: "Ghostface",
-    last: "Killer",
-    age: 45
-  },
-  {
-    id: 3,
-    first: "Childish",
-    last: "Gambino",
-    age: 30
-  },
-  {
-    id: 4,
-    first: "Frank",
-    last: "Ocean",
-    age: 32
-  }
-]
-
 function searchingFor(term) {
   return function(x) {
     let length = term.length;
@@ -46,8 +19,25 @@ class App extends Component {
     super(props);
 
       this.state = {
-        people: people,
-        term: ''
+        term: '',
+        people: [
+          {
+            first: "Andre",
+            last: "3000"
+          },
+          {
+            first: "Ghostface",
+            last: "Killer"
+          },
+          {
+            first: "Childish",
+            last: "Gambino"
+          },
+          {
+            first: "Frank",
+            last: "Ocean"
+          }
+        ]
       }
 
       this.searchHandler = this.searchHandler.bind(this);
@@ -69,10 +59,9 @@ class App extends Component {
         </form>
         {
           people.filter(searchingFor(term)).map(person =>
-            <div key={person.id}>
+            <div>
               <h1>{person.first}</h1>
               <h1>{person.last}</h1>
-              <h1>{person.age}</h1>
             </div>
           )
         }
